@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>UniAgenda</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title has-text-primary">UniAgenda</h1>
+
+      <form id="formAtividade" class="box">
+        <input type="hidden" id="atividadeId">
+
+        <div class="field">
+          <label class="label">Título</label>
+          <div class="control">
+            <input class="input" type="text" id="titulo" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Descrição</label>
+          <div class="control">
+            <textarea class="textarea" id="descricao" required></textarea>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <label class="label">Data</label>
+              <div class="control">
+                <input class="input" type="date" id="data" required>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Hora</label>
+              <div class="control">
+                <input class="input" type="time" id="hora" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped mt-4">
+          <div class="control">
+            <button type="submit" class="button is-primary">Salvar</button>
+          </div>
+          <div class="control">
+            <button type="button" class="button is-light" onclick="cancelarEdicao()">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <h2 class="subtitle mt-6">Atividades</h2>
+      <div id="listaAtividades" class="columns is-multiline"></div>
+    </div>
+  </section>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
